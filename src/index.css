@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-lime-accent: #C6FF3D;
+  --color-violet-accent: #7C5CFF;
+  --color-cyan-accent: #22D3EE;
+}
+
+:root {
+  --bg-space: #0A0A0F;
+  --bg-card: rgba(18, 18, 26, 0.75);
+  --bg-card-hover: rgba(26, 26, 42, 0.9);
+  --bg-elevated: #161622;
+  --bg-input: rgba(255, 255, 255, 0.04);
+  --text-main: #CBD5E1;
+  --text-heading: #FFFFFF;
+  --text-sub: #94A3B8;
+  --border-main: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.24);
+  --nav-bg: rgba(10, 10, 15, 0.85);
+  --drawer-bg: rgba(10, 10, 15, 0.96);
+  --chip-bg: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+
+/* Light Theme Variables */
+html.light {
+  --bg-space: #F8FAFC;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 1);
+  --bg-elevated: #F1F5F9;
+  --bg-input: rgba(15, 23, 42, 0.04);
+  --text-main: #334155;
+  --text-heading: #0F172A;
+  --text-sub: #64748B;
+  --border-main: rgba(15, 23, 42, 0.12);
+  --border-active: rgba(15, 23, 42, 0.28);
+  --nav-bg: rgba(248, 250, 252, 0.88);
+  --drawer-bg: rgba(248, 250, 252, 0.98);
+  --chip-bg: rgba(15, 23, 42, 0.05);
+  color-scheme: light;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-space);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-space);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom selection */
+::selection {
+  background-color: #C6FF3D;
+  color: #0A0A0F;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-space);
+}
+::-webkit-scrollbar-thumb {
+  background: #222234;
+  border-radius: 4px;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C5CFF;
+}
+
+/* Noise overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+html.light .bg-noise {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-main);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel-hover:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .glass-panel-hover:hover {
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Glow effects */
+.glow-lime {
+  box-shadow: 0 0 28px -4px rgba(198, 255, 61, 0.35);
+}
+
+.glow-violet {
+  box-shadow: 0 0 32px -4px rgba(124, 92, 255, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 28px -4px rgba(34, 211, 238, 0.35);
+}
+
+/* Text Gradients */
+.text-gradient-lime {
+  background: linear-gradient(135deg, var(--text-heading) 30%, #C6FF3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .text-gradient-lime {
+  background: linear-gradient(135deg, #0F172A 20%, #4D7C0F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-violet-cyan {
+  background: linear-gradient(135deg, #7C5CFF 0%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-rainbow {
+  background: linear-gradient(90deg, #C6FF3D 0%, #22D3EE 50%, #7C5CFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Laser pulse animation */
+@keyframes laserFlow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+.animate-laser {
+  animation: laserFlow 1.8s infinite ease-in-out;
+}
